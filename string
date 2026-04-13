@@ -1,0 +1,11 @@
+{
+  "action": "schema_check",
+  "result": {
+    "dataset": "customer_data",
+    "actual_columns": "{'rating', 'email', 'file_data', 'last_login', 'profile_pic', 'birth_date', 'balance', 'big_val', 'age', 'small_val', 'is_active', 'name', 'phone_number', 'salary', 'id'}",
+    "expected_columns": "{'rating', 'email', 'file_data', 'last_login', 'profile_pic', 'birth_date', 'balance', 'big_val', 'age', 'small_val', 'is_active', 'name', 'phone_number', 'salary', 'id'}",
+    "missing_columns": [],
+    "extra_columns": [],
+    "ai_suggestions": {}
+  }
+}

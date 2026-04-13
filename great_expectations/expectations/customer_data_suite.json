@@ -1,0 +1,261 @@
+{
+  "expectations": [
+    {
+      "id": "309c4340-7a76-449d-b48a-912769d6cdb3",
+      "kwargs": {
+        "column": "id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_to_exist"
+    },
+    {
+      "id": "11a892c4-08bd-4bab-bd28-f5f0002d0622",
+      "kwargs": {
+        "column": "phone_number"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_to_exist"
+    },
+    {
+      "id": "3d212061-f93f-42e1-93ed-7b2c39db41e0",
+      "kwargs": {
+        "column": "name"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_to_exist"
+    },
+    {
+      "id": "3ebbe2c1-9b0e-4aab-a362-83da84e10986",
+      "kwargs": {
+        "column": "age"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_to_exist"
+    },
+    {
+      "id": "11178a57-6b52-4c8d-82da-fcdec5f5030d",
+      "kwargs": {
+        "column": "salary"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_to_exist"
+    },
+    {
+      "id": "4db908dd-f9fc-4865-b56a-c397c6e13bd6",
+      "kwargs": {
+        "column": "is_active"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_to_exist"
+    },
+    {
+      "id": "6eeaf762-e218-4d2d-a4d0-57d75d454d83",
+      "kwargs": {
+        "column": "birth_date"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_to_exist"
+    },
+    {
+      "id": "e8e441f9-8afd-411a-a1f7-ad4b440d043a",
+      "kwargs": {
+        "column": "last_login"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_to_exist"
+    },
+    {
+      "id": "12375ed9-2a5a-4a8c-ad74-0ce38821af11",
+      "kwargs": {
+        "column": "profile_pic"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_to_exist"
+    },
+    {
+      "id": "b1afc15f-2baa-4058-af5a-202a873e23af",
+      "kwargs": {
+        "column": "small_val"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_to_exist"
+    },
+    {
+      "id": "e18face9-ebe8-45b1-83ee-4d58d05e70a8",
+      "kwargs": {
+        "column": "big_val"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_to_exist"
+    },
+    {
+      "id": "ed5f0d8f-85e0-45b3-8361-512c9050ad5a",
+      "kwargs": {
+        "column": "rating"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_to_exist"
+    },
+    {
+      "id": "6abebeea-9c51-411c-89f6-6ab653133ec4",
+      "kwargs": {
+        "column": "file_data"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_to_exist"
+    },
+    {
+      "id": "230a194e-1aca-4bc4-b11c-3fd85276bb5b",
+      "kwargs": {
+        "column": "balance"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_to_exist"
+    },
+    {
+      "id": "f8e11f28-7681-4ffe-99cf-69d21c67459e",
+      "kwargs": {
+        "column": "email"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_to_exist"
+    },
+    {
+      "id": "016424f6-58d3-4456-9cd3-19c4ae91e81b",
+      "kwargs": {
+        "column": "id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "e0b73d69-0e05-4fc6-b94f-26ab1d4ba52c",
+      "kwargs": {
+        "column": "id",
+        "type_": "int64"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_of_type"
+    },
+    {
+      "id": "64dea3c5-6b69-4dff-ba95-a85bed762c42",
+      "kwargs": {
+        "column": "age",
+        "type_": "int64"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_of_type"
+    },
+    {
+      "id": "a5129e7f-e476-459c-ae01-3911d1c3eff1",
+      "kwargs": {
+        "column": "name",
+        "type_": "str"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_of_type"
+    },
+    {
+      "id": "c460ca61-f980-43de-9d47-3c92d8dcdbce",
+      "kwargs": {
+        "column": "age",
+        "max_value": 100.0,
+        "min_value": 0.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "12f06f84-c034-4641-afb0-8c1397178aff",
+      "kwargs": {
+        "column": "is_active",
+        "value_set": [
+          "TRUE",
+          "FALSE"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "id": "e8c52b32-9487-4044-a248-283085bddafc",
+      "kwargs": {
+        "column": "phone_number",
+        "regex": "^[0-9]{10}$"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_match_regex"
+    },
+    {
+      "id": "fd2635fa-1ed8-4e56-9eef-d56743e14cf0",
+      "kwargs": {
+        "column": "name",
+        "max_value": 18,
+        "min_value": 3
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_value_lengths_to_be_between"
+    },
+    {
+      "id": "b237feed-336a-47fe-af0b-cb3fa239965f",
+      "kwargs": {
+        "column": "id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_unique"
+    },
+    {
+      "id": "7fa2caac-330d-4c91-aa52-8f4478ee5b84",
+      "kwargs": {
+        "column": "salary",
+        "max_value": 100000.0,
+        "min_value": 50000.0
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_median_to_be_between"
+    },
+    {
+      "id": "0ccbb5b5-614a-4787-b82c-3ee59c10e24c",
+      "kwargs": {
+        "column_list": [
+          "id",
+          "email"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_compound_columns_to_be_unique"
+    }
+  ],
+  "id": "e2ceac80-c315-4454-9836-1b587f9cacd2",
+  "meta": {
+    "great_expectations_version": "1.16.0"
+  },
+  "name": "customer_data_suite",
+  "notes": null
+}

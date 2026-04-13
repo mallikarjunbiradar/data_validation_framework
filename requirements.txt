@@ -1,0 +1,8 @@
+pandas
+great_expectations
+rich
+pytest
+pyyaml
+openai
+fastapi
+uvicorn

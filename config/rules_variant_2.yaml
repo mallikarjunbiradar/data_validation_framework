@@ -1,0 +1,76 @@
+datasets:
+     customer_data:
+           id: customer.v1
+           description: "Customer ingestion rules"
+           path: "data/sample_source.csv"
+           #sink_path: "data/sink.csv"
+           sink_path: "data/sample_dst.csv"
+           expectations:
+                 # Make sure required columns always exist
+                 - expect_column_to_exist:
+                         column_list: ["customer_id", "email", "age"]
+
+                 # Make sure mandatory fields are populated
+                 - expect_column_values_to_not_be_null:
+                         column_list: ["customer_id", "email"]
+
+                 # Make sure data types match
+                 - expect_column_values_to_be_of_type:
+                         column_list: ["customer_id", "age"]
+                         type_: "int64"
+
+                 - expect_column_values_to_be_of_type:
+                         column_list: ["email"]
+                         type_: "str"
+
+                 # Make sure value ranges are valid and outliers
+                 - expect_column_values_to_be_between:
+                         column_list: ["age"]
+                         min_value: 18
+                         max_value: 60
+                 #                  allow_null: false
+
+                 # Check for specific values
+                 - expect_column_values_to_be_in_set:
+                         column_list: ["status"]
+                         value_set: ["Active"]
+
+                 # Match regex patterns
+                 - expect_column_values_to_match_regex:
+                         column: "email"
+                         regex: "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+
+                 - expect_column_values_to_match_regex:
+                         column_list: ["phone_number"]
+                         regex: "^[0-9]{10}$"
+
+                 # Check for string length
+                 - expect_column_value_lengths_to_be_between:
+                         column_list: ["name", "address"]
+                         min_value: 3
+                         max_value: 60
+
+                 # Check for unique values
+                 - expect_column_values_to_be_unique:
+                         column_list: ["id", "email"]
+
+                 # Check for outliers
+                 - expect_column_median_to_be_between:
+                         column_list: ["salary", "marks"]
+                         min_value: 10000
+                         max_value: 100000
+
+                 # Multi column expectations
+                 # - expect_compound_columns_to_be_unique:
+                 #       column_pairs:
+                 #           - ["id", "email"]
+
+                 # Conditional expectations
+                 - expect_column_values_to_not_be_null:
+                         column_list: ["customer_id"]
+                         condition_parser: "pandas"
+                         row_condition: "status == 'Active'"
+
+           reconciliation:
+                 key_columns: ["customer_id"]
+                 compare_with_sink: true

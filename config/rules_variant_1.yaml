@@ -1,0 +1,140 @@
+datasets:
+       customer_data:
+               id: customer.v1
+               description: "Customer ingestion rules"
+               path: "data/sample_source.csv"
+               #sink_path: "data/sink.csv"
+               sink_path: "data/sample_dst.csv"
+               expectations:
+                       # Schema checks
+                       - expect_column_to_exist:
+                                 column:
+                                         [
+                                                 "id",
+                                                 "phone_number",
+                                                 "name",
+                                                 "age",
+                                                 "salary",
+                                                 "is_active",
+                                                 "birth_date",
+                                                 "last_login",
+                                                 "profile_pic",
+                                                 "small_val",
+                                                 "big_val",
+                                                 "rating",
+                                                 "file_data",
+                                                 "balance",
+                                                 "email",
+                                         ]
+
+                       # Make sure mandatory fields are populated
+                       - expect_column_values_to_not_be_null:
+                                 column_list: ["id"]
+
+                       # Make sure data types match
+                       - expect_column_values_to_be_of_type:
+                                 column_list: ["id", "age"]
+                                 type_: "int64"
+
+                       - expect_column_values_to_be_of_type:
+                                 column_list: ["name"]
+                                 type_: "str"
+
+                       # Make sure value ranges are valid and outliers
+                       - expect_column_values_to_be_between:
+                                 column_list: ["age"]
+                                 min_value: 0
+                                 max_value: 100
+                       #                  allow_null: false
+
+                       # Check for specific values
+                       - expect_column_values_to_be_in_set:
+                                 column_list: ["is_active"]
+                                 value_set: ["TRUE", "FALSE"]
+
+                       # Match regex patterns
+                       # - expect_column_values_to_match_regex:
+                       #           column: "email"
+                       #           regex: "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+
+                       - expect_column_values_to_match_regex:
+                                 column_list: ["phone_number"]
+                                 regex: "^[0-9]{10}$"
+
+                       # Check for string length
+                       - expect_column_value_lengths_to_be_between:
+                                 column_list: ["name"]
+                                 min_value: 3
+                                 max_value: 18
+
+                       # Check for unique values
+                       - expect_column_values_to_be_unique:
+                                 column_list: ["id"]
+
+                       # Check for outliers
+                       - expect_column_median_to_be_between:
+                                 column_list: ["salary"]
+                                 min_value: 50000
+                                 max_value: 100000
+
+                       # Multi column expectations
+                       - expect_compound_columns_to_be_unique:
+                                 column_pairs:
+                                         - ["id", "email"]
+
+                       #Conditional expectations
+                       # - expect_column_values_to_not_be_null:
+                       #           column_list: ["age"]
+                       #           condition_parser: "pandas"
+                       #           row_condition: "is_active == 'True'"
+
+               reconciliation:
+                       key_columns: [
+                                       "id",
+                                       "name",
+                                       "age",
+                                       "salary",
+                                       "is_active",
+                                       "birth_date",
+                                       "last_login",
+                                       "profile_pic",
+                                       "small_val",
+                                       "big_val",
+                                       "rating",
+                                       "file_data",
+                                       "balance",
+                                       # "email",
+                                       # "phone_number",
+                               ]
+                       compare_with_sink: true
+
+
+dataset_name: sales_data
+rules:
+   - name: "Check non-null CustomerID"
+     expectation: "expect_column_values_to_not_be_null"
+     column: "CustomerID"
+   - name: "Check Sales in range"
+     expectation: "expect_column_values_to_be_between"
+     column: "Sales"
+     min_value: 0
+     max_value: 100000
+   - name: "Check unique OrderID"
+     expectation: "expect_column_values_to_be_unique"
+     column: "OrderID"
+   - name: "Check Date format"
+     expectation: "expect_column_values_to_match_strftime_format"
+     column: "OrderDate"
+     format: "%Y-%m-%d"
+
+
+datasources:
+ default_pandas:
+   class_name: Datasource
+   execution_engine:
+     class_name: PandasExecutionEngine
+   data_connectors:
+     default_runtime_data_connector:
+       class_name: RuntimeDataConnector
+       batch_identifiers:
+         - default_identifier_name
